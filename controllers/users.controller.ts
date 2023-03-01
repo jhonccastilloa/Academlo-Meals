@@ -47,7 +47,7 @@ const updateUser = catchAsync(
   async (req: RequestExt, res: Response, next: NextFunction) => {
     const { user } = req;
     const { name, email } = req.body;
-    const newUser = await user?.update({ name, email });
+    const newUser = await user.update({ name, email });
     res.json({
       status: 'succes',
       message: 'the user was edited succesfully',
@@ -57,7 +57,7 @@ const updateUser = catchAsync(
 );
 const deleteUser = catchAsync(async (req: RequestExt, res: Response) => {
   const { user } = req;
-  await user?.update({ status: 'unavailable' });
+  await user.update({ status: 'unavailable' });
   res.json({ status: 'success', message: 'User was deleted successfully' });
 });
 

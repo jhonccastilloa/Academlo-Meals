@@ -18,7 +18,7 @@ const RestaurantModel = db.define<RestaurantModelProps>('restaurants', {
     allowNull: false,
   },
   rating: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.ENUM("1","2","3","4","5"),
     allowNull: false,
   },
   status: {

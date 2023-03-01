@@ -9,7 +9,6 @@ const ReviewModel = db.define<ReviewModelProps>('reviews', {
     autoIncrement: true,
     primaryKey: true,
   },
-
   userId: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -25,6 +24,11 @@ const ReviewModel = db.define<ReviewModelProps>('reviews', {
   rating: {
     type: DataTypes.INTEGER,
     allowNull: false,
+  },
+  status: {
+    type: DataTypes.ENUM('available', 'unavailable'),
+    allowNull: false,
+    defaultValue: 'available',
   },
 });
 

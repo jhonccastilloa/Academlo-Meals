@@ -33,17 +33,17 @@ const protect = catchAsync(
   }
 );
 
-// const checkRol =
-//   (roles: string[]): any =>
-//   (req: RequestExt, res: Response, next: NextFunction) => {
-//     const { role } = req.sessionUser;
-//     if (!roles.includes(role)) {
-//       return next(
-//         new AppError('You do not have permission to perfom this action.!', 403)
-//       );
-//     }
-//     next();
-//   };
+const checkRol =
+  (roles: string[]): any =>
+  (req: RequestExt, res: Response, next: NextFunction) => {
+    const { role } = req.sessionUser;
+    if (!roles.includes(role)) {
+      return next(
+        new AppError('You do not have permission to perfom this action.!', 403)
+      );
+    }
+    next();
+  };
 
 const protectAccountOwner = catchAsync(
   async (req: RequestExt, res: Response, next: NextFunction) => {
@@ -54,4 +54,4 @@ const protectAccountOwner = catchAsync(
     next();
   }
 );
-export { protect, protectAccountOwner };
+export { protect, protectAccountOwner,checkRol };

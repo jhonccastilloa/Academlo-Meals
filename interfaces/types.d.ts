@@ -9,6 +9,7 @@ import {
 type UserRole = 'normal' | 'admin';
 type Status = 'available' | 'unavailable';
 type OrderStatus = 'active' | 'cancelled' | 'completed';
+type Rating = 1 | 2 | 3 | 4 | 5;
 
 export interface UserModelProps
   extends Model<
@@ -56,13 +57,8 @@ export interface RestaurantModelProps
   id: CreationOptional<number>;
   name: string;
   address: string;
-  rating: number;
+  rating: Rating;
   status: CreationOptional<Status>;
-}
-
-export interface RequestExt extends Request {
-  user: UserModelProps;
-  sessionUser: UserModelProps;
 }
 
 export interface ReviewModelProps
@@ -75,8 +71,15 @@ export interface ReviewModelProps
   comment: string;
   restaurantId: number;
   rating: number;
+  status: CreationOptional<Status>;
 }
 
+export interface RequestExt extends Request {
+  user: UserModelProps;
+  sessionUser: UserModelProps;
+  restaurant:RestaurantModelProps;
+  review:ReviewModelProps
+}
 export interface JwtPayload {
   id: number;
 }

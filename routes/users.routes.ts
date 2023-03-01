@@ -27,4 +27,5 @@ router.patch(
   updateUser
 );
 router.delete('/:id', validUserById, protectAccountOwner, deleteUser);
+
 export default router;
