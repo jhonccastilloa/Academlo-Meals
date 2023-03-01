@@ -1,5 +1,5 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
-import { RequestExt, RequestHandlerExt } from '../interfaces/types';
+import { NextFunction,  Response } from 'express';
+import { RequestExt } from '../interfaces/types';
 import UserModel from '../models/user.models';
 import AppError from '../utils/appError';
 import catchAsync from '../utils/catchAsync';
