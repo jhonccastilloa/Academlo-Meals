@@ -24,4 +24,19 @@ const validMealById = catchAsync(
   }
 );
 
-export { validMealById };
+const validMealByMealId = catchAsync(
+  async (req: RequestExt, res: Response, next: NextFunction) => {
+    const { mealId} = req.body;
+    const meal = await MealModel.findOne({
+      where: {
+        id: mealId,
+        status: 'available',
+      },
+    });
+    if (!meal) return next(new AppError('meal not found', 404));
+
+    req.meal = meal;
+    next();
+  }
+);
+export { validMealById, validMealByMealId };

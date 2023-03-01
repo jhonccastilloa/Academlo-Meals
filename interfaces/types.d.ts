@@ -80,6 +80,7 @@ export interface RequestExt extends Request {
   restaurant: RestaurantModelProps;
   review: ReviewModelProps;
   meal: MealModelProps;
+  order:OrderModelProps
 }
 export interface JwtPayload {
   id: number;
