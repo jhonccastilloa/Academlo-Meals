@@ -17,8 +17,8 @@ const initModels = () => {
   OrderModel.hasOne(MealModel);
   MealModel.belongsTo(OrderModel);
 
-  OrderModel.hasMany(UserModel);
-  UserModel.belongsTo(OrderModel);
+  UserModel.hasMany(OrderModel);
+  OrderModel.belongsTo(UserModel);
 };
 
 export default initModels;

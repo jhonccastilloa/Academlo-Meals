@@ -3,6 +3,7 @@ import cors from 'cors';
 import db from '../database/db';
 import initModels from './initModels';
 import userRouter from '../routes/users.routes';
+import restaurantRouter from '../routes/restaurants.routes';
 import globalErrorHandler from '../controllers/error.controller';
 import AppError from '../utils/appError';
 
@@ -11,7 +12,7 @@ class Server {
   private PORT: string = process.env.PORT || '4003';
   private path = {
     users: '/api/v1/users',
-    repairs: '/api/v1/repairs',
+    restaurants: '/api/v1/restaurants',
   };
   constructor() {
     this.app = express();
@@ -26,13 +27,14 @@ class Server {
   }
   routes() {
     this.app.use(this.path.users, userRouter);
+    this.app.use(this.path.restaurants, restaurantRouter);
 
-
-    this.app.all('*', (req, res,next) => {
-      return next(new AppError(`can't find ${req.originalUrl} on this server`,404))
-
+    this.app.all('*', (req, res, next) => {
+      return next(
+        new AppError(`can't find ${req.originalUrl} on this server`, 404)
+      );
     });
-    this.app.use(globalErrorHandler)
+    this.app.use(globalErrorHandler);
   }
   database() {
     db.authenticate()

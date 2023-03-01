@@ -1,3 +1,4 @@
+import { Request } from 'express';
 import {
   CreationOptional,
   InferAttributes,
@@ -57,6 +58,11 @@ export interface RestaurantModelProps
   address: string;
   rating: number;
   status: CreationOptional<Status>;
+}
+
+export interface RequestExt extends Request {
+  user: UserModelProps;
+  sessionUser: UserModelProps;
 }
 
 export interface ReviewModelProps

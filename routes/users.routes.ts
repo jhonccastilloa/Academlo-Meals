@@ -1,8 +1,30 @@
 import { Router } from 'express';
-import { signup } from '../controllers/users.controller';
+import {
+  deleteUser,
+  login,
+  signup,
+  updateUser,
+} from '../controllers/users.controller';
+import { protect, protectAccountOwner } from '../middlewares/auth.middlewares';
+import {
+  validRepeatEmail,
+  validUserById,
+} from '../middlewares/users.middlewares';
+import validateUserCreate from '../validators/users.validators';
 
 const router = Router();
 
-router.post('/signup',signup);
+router.post('/signup', validateUserCreate, validRepeatEmail, signup);
+router.post('/login', login);
 
-export default  router ;
+router.use(protect);
+
+router.patch(
+  '/:id',
+  validUserById,
+  validRepeatEmail,
+  protectAccountOwner,
+  updateUser
+);
+router.delete('/:id', validUserById, protectAccountOwner, deleteUser);
+export default router;
