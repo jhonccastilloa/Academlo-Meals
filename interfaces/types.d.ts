@@ -70,3 +70,7 @@ export interface ReviewModelProps
   restaurantId: number;
   rating: number;
 }
+
+export interface JwtPayload {
+  id: number;
+}
