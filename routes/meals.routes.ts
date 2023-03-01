@@ -14,11 +14,11 @@ const router = Router();
 
 
 router.get('/:id', validMealById, findMeal);
+router.get('/', findMeals);
 
 router.use(protect);
 
 router.post('/:restaurantId',checkRol(['admin']), validRestaurantById, createMeal);
-router.get('/', findMeals);
 router.patch('/:id', checkRol(['admin']),validMealById, updateMeal);
 router.delete('/:id', checkRol(['admin']),validMealById, deleteMeal);
 
