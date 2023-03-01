@@ -10,7 +10,7 @@ type UserRole = 'normal' | 'admin';
 type Status = 'available' | 'unavailable';
 type OrderStatus = 'active' | 'cancelled' | 'completed';
 type Rating = 1 | 2 | 3 | 4 | 5;
-export type RequestHandlerExt=(req: RequestExt, res: Response, next: NextFunction) => any
+
 
 export interface UserModelProps
   extends Model<
