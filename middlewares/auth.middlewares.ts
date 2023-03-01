@@ -1,9 +1,5 @@
 import { NextFunction, Request, RequestHandler, Response } from 'express';
-import {
-  RequestExt,
-  // RequestHandlerExt,
-  UserModelProps,
-} from '../interfaces/types';
+import { RequestExt, RequestHandlerExt } from '../interfaces/types';
 import UserModel from '../models/user.models';
 import AppError from '../utils/appError';
 import catchAsync from '../utils/catchAsync';
@@ -54,4 +50,4 @@ const protectAccountOwner = catchAsync(
     next();
   }
 );
-export { protect, protectAccountOwner,checkRol };
+export { protect, protectAccountOwner, checkRol };

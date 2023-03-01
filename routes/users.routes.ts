@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import {
   deleteUser,
+  findUserOrder,
+  findUserOrderById,
   login,
   signup,
   updateUser,
@@ -27,5 +29,9 @@ router.patch(
   updateUser
 );
 router.delete('/:id', validUserById, protectAccountOwner, deleteUser);
+
+router.get('/orders', findUserOrder);
+router.get('/orders/:id', findUserOrderById);
+
 
 export default router;
