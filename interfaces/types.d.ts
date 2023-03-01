@@ -77,8 +77,9 @@ export interface ReviewModelProps
 export interface RequestExt extends Request {
   user: UserModelProps;
   sessionUser: UserModelProps;
-  restaurant:RestaurantModelProps;
-  review:ReviewModelProps
+  restaurant: RestaurantModelProps;
+  review: ReviewModelProps;
+  meal: MealModelProps;
 }
 export interface JwtPayload {
   id: number;
